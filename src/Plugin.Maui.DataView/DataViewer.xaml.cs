@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -10,8 +9,6 @@ public partial class DataViewer : ContentView
     {
         InitializeComponent();
     }
-    
-    public IReadOnlyList<Column> Columns { get; set; } = [];
     
     public static readonly BindableProperty TablesProperty =
         BindableProperty.Create(nameof(Tables), typeof(ObservableCollection<Table>), typeof(DataViewer), null,  propertyChanged: TablesPropertyChanged);
@@ -50,33 +47,17 @@ public partial class DataViewer : ContentView
         }
         
         Header.ItemsSource = selectedTable.Columns;
-        
-        Columns = selectedTable.Columns;
-        OnPropertyChanged(nameof(Columns));
-        
-        // DataGrid.ColumnDefinitions.Clear();
-        // DataGrid.RowDefinitions.Clear();
-        // DataGrid.Children.Clear();
-        //
-        // DataGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-        //
-        // for (var columnIndex = 0; columnIndex < selectedTable.Columns.Count; columnIndex++)
-        // {
-        //     var column = selectedTable.Columns[columnIndex];
-        //     DataGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
-        //
-        //     var columnHeader = new Button
-        //     {
-        //         Text = column.Name,
-        //     };
-        //     
-        //     DataGrid.Children.Add(columnHeader);
-        //     DataGrid.SetColumn(columnHeader, columnIndex);
-        // }
     }
 
     private async void UpdateData(Table selectedTable)
     {
+        var dataProvider = DataProvider.Instance;
+        
+        if (dataProvider is null)
+        {
+            return;
+        }
+        
         var stopwatch = Stopwatch.StartNew();
         
         IReadOnlyList<object> data;
@@ -85,11 +66,11 @@ public partial class DataViewer : ContentView
         
         if (string.IsNullOrWhiteSpace(QueryEditor.Text) is false)
         {
-            data = await DataProvider.Instance.QueryData(selectedTable, QueryEditor.Text);    
+            data = await dataProvider.QueryData(selectedTable, QueryEditor.Text);    
         }
         else
         {
-            data = await DataProvider.Instance.LoadData(selectedTable);
+            data = await dataProvider.LoadData(selectedTable);
         }
         
         Console.WriteLine($"Loaded data from {selectedTable.Name} {stopwatch.ElapsedMilliseconds}ms");
@@ -157,5 +138,17 @@ public partial class DataViewer : ContentView
     private void OnHeaderButtonClicked(object? sender, EventArgs e)
     {
         
+    }
+
+    private void OnLoaded(object? sender, EventArgs e)
+    {
+        var dataProvider = DataProvider.Instance;
+        
+        if (dataProvider is null)
+        {
+            return;
+        }
+        
+        Tables = new ObservableCollection<Table>(dataProvider.TableDefinitions);
     }
 }

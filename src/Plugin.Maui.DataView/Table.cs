@@ -64,7 +64,7 @@ public class Row
 
 public class Cell
 {
-    public Cell(object value, Column column)
+    public Cell(object? value, Column column)
     {
         Value = value;
         Column = column;
@@ -72,5 +72,5 @@ public class Cell
     
     public Column Column { get; }
     
-    public object Value { get; }
+    public object? Value { get; }
 }
