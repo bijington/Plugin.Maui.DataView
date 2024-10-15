@@ -9,25 +9,6 @@ public partial class DataViewer : ContentView
     {
         InitializeComponent();
     }
-    
-    public static readonly BindableProperty TablesProperty =
-        BindableProperty.Create(nameof(Tables), typeof(ObservableCollection<Table>), typeof(DataViewer), null,  propertyChanged: TablesPropertyChanged);
-    
-    public ObservableCollection<Table> Tables
-    {
-        get => (ObservableCollection<Table>)GetValue(TablesProperty);
-        set => SetValue(TablesProperty, value);
-    }
-
-    private static void TablesPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        ((DataViewer)bindable).UpdateTables();
-    }
-
-    private void UpdateTables()
-    {
-        TablePicker.ItemsSource = Tables;
-    }
 
     private void OnTablePickerSelectedIndexChanged(object? sender, EventArgs e)
     {
@@ -149,6 +130,6 @@ public partial class DataViewer : ContentView
             return;
         }
         
-        Tables = new ObservableCollection<Table>(dataProvider.TableDefinitions);
+        TablePicker.ItemsSource = new ObservableCollection<Table>(dataProvider.TableDefinitions);
     }
 }

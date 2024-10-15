@@ -23,10 +23,11 @@
                 HorizontalOptions="End"
                 Clicked="OnRunButtonClicked" />
             
+            <!-- TODO: Turn this into some form of DataGrid -->
             <CollectionView
                 x:Name="Header"
                 Grid.Row="2"
-                MaximumWidthRequest="400"
+                WidthRequest="{Binding Width, Source={x:Reference Self}}"
                 Scrolled="OnHeaderScrolled">
                 
                 <CollectionView.ItemsLayout>
@@ -48,8 +49,8 @@
             <CollectionView 
                 x:Name="Data"
                 Grid.Row="3"
-                MaximumHeightRequest="400"
-                MaximumWidthRequest="400"
+                
+                WidthRequest="{Binding Width, Source={x:Reference Self}}"
                 VerticalOptions="Start"
                 Scrolled="OnDataScrolled"
                 HorizontalScrollBarVisibility="Always">

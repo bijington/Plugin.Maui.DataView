@@ -4,6 +4,6 @@
              xmlns:dataView="clr-namespace:Plugin.Maui.DataView;assembly=Plugin.Maui.DataView"
              x:Class="Plugin.Maui.DataView.Sample.MainPage">
 
-    <dataView:DataViewer x:Name="Viewer" Tables="{Binding Tables}"/>
+    <dataView:DataViewer />
 
 </ContentPage>

@@ -19,6 +19,8 @@ public class Data
         // for (var i = 0; i < 10000; i++)
         // {
         //     connection.Insert(new Student { Name = $"Student {i}"});
+        //     connection.Insert(new Course { Name = $"Course {i}"});
+        //     connection.Insert(new Enrolment() { CourseId = i, StudentId = i, Enrolled = DateTime.Now.AddDays(-i)});
         // }
         
         return connection;

@@ -29,21 +29,17 @@ public class Column : INotifyPropertyChanged
     public double Width
     {
         get => _width;
-        set
-        {
-            _width = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Width)));
-        }
+        set => SetField(ref _width, value);
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    private bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
     {
         if (EqualityComparer<T>.Default.Equals(field, value)) return false;
         field = value;
@@ -52,7 +48,7 @@ public class Column : INotifyPropertyChanged
     }
 }
 
-public class Row
+internal class Row
 {
     public Row(IReadOnlyList<Cell> cells)
     {
@@ -62,7 +58,7 @@ public class Row
     public IReadOnlyList<Cell> Cells { get; }
 }
 
-public class Cell
+internal class Cell
 {
     public Cell(object? value, Column column)
     {
