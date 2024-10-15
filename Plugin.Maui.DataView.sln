@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E694DEBF-8705-4BE9-A5E5-4212B0406502}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.DataView.Sample", "samples\Plugin.Maui.DataView.Sample\Plugin.Maui.DataView.Sample.csproj", "{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FDBCE8F-6C04-45D5-A9E5-2CD611941B85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.DataView.SqliteNet", "src\Plugin.Maui.DataView.SqliteNet\Plugin.Maui.DataView.SqliteNet.csproj", "{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.DataView", "src\Plugin.Maui.DataView\Plugin.Maui.DataView.csproj", "{342AF518-5494-4A90-B2C4-A695A416020B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Maui.DataView.LiteDB", "src\Plugin.Maui.DataView.LiteDB\Plugin.Maui.DataView.LiteDB.csproj", "{F2888BD7-3247-45B2-9112-06806A896C51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342AF518-5494-4A90-B2C4-A695A416020B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342AF518-5494-4A90-B2C4-A695A416020B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342AF518-5494-4A90-B2C4-A695A416020B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342AF518-5494-4A90-B2C4-A695A416020B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2888BD7-3247-45B2-9112-06806A896C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2888BD7-3247-45B2-9112-06806A896C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2888BD7-3247-45B2-9112-06806A896C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2888BD7-3247-45B2-9112-06806A896C51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3B96D55-7A73-44E4-BE1A-D9D91EF8551E} = {E694DEBF-8705-4BE9-A5E5-4212B0406502}
+		{3F0EC320-AF29-4B15-B1C4-2EA86B78D2E8} = {6FDBCE8F-6C04-45D5-A9E5-2CD611941B85}
+		{342AF518-5494-4A90-B2C4-A695A416020B} = {6FDBCE8F-6C04-45D5-A9E5-2CD611941B85}
+		{F2888BD7-3247-45B2-9112-06806A896C51} = {6FDBCE8F-6C04-45D5-A9E5-2CD611941B85}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62D914E5-668B-4A95-A3D6-F770D29320F3}
+	EndGlobalSection
+EndGlobal

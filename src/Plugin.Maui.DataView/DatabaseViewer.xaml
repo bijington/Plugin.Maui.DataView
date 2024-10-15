@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:DataView="clr-namespace:Plugin.Maui.DataView"
+             x:Class="Plugin.Maui.DataView.DataViewer"
+             x:Name="Self">
+    
+        <Grid RowDefinitions="Auto,Auto,40,*">
+            <Picker 
+                x:Name="TablePicker"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedIndexChanged="OnTablePickerSelectedIndexChanged"/>
+            
+            <Editor x:Name="QueryEditor" Grid.Row="1" />
+            <Button Text="R" Grid.Row="1" HorizontalOptions="End" Clicked="OnRunButtonClicked" />
+            
+            <CollectionView
+                x:Name="Header"
+                Grid.Row="2"
+                MaximumWidthRequest="400"
+                Scrolled="OnHeaderScrolled">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="DataView:Column">
+                        <Button 
+                            Text="{Binding Name}"
+                            CornerRadius="0"
+                            WidthRequest="{Binding Width}"
+                            Clicked="OnHeaderButtonClicked" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+            <CollectionView 
+                x:Name="Data"
+                Grid.Row="3"
+                MaximumHeightRequest="400"
+                MaximumWidthRequest="400"
+                VerticalOptions="Start"
+                Scrolled="OnDataScrolled"
+                HorizontalScrollBarVisibility="Always">
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="DataView:Row">
+                        <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Cells}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="DataView:Cell">
+                                    <Label Text="{Binding Value}" HeightRequest="30" WidthRequest="{Binding Column.Width}"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    
+</ContentView>
